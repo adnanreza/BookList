@@ -135,12 +135,17 @@ document.querySelector("#book-list").addEventListener("click", function(e) {
 // Event listener for clearAll button
 document.querySelector("#bookList").addEventListener("submit", function(e) {
   //remove all TRs from ui
-  console.log(e.target.querySelector("#book-list").querySelectorAll("tr"));
-
-  e.target
-    .querySelector("#book-list")
-    .querySelectorAll("tr")
-    .remove();
+  const bookList = document.querySelector("#book-list");
+  clearBooks(bookList);
 
   e.preventDefault();
 });
+
+function clearBooks(bookList) {
+  //hackyway:
+  //bookList.innerHTML = "";
+  //loop through and remove first child while it exists
+  while (bookList.firstChild) {
+    bookList.removeChild(bookList.firstChild);
+  }
+}
