@@ -131,3 +131,21 @@ document.querySelector("#book-list").addEventListener("click", function(e) {
   ui.showAlert("Book removed!", "success");
   e.preventDefault();
 });
+
+// Event listener for clearAll button
+document.querySelector("#bookList").addEventListener("submit", function(e) {
+  //remove all TRs from ui
+  const bookList = document.querySelector("#book-list");
+  clearBooks(bookList);
+
+  e.preventDefault();
+});
+
+function clearBooks(bookList) {
+  //hackyway:
+  //bookList.innerHTML = "";
+  //loop through and remove first child while it exists
+  while (bookList.firstChild) {
+    bookList.removeChild(bookList.firstChild);
+  }
+}
